@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from contact_us_api.views import ContactUsListView
+from contact_us_api.views import ContactUsListView, ProductContactUsView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/contact-us/product-inquiry/', ContactUsListView.as_view(), name='query')
+    path('api/contact-us/product-inquiry/', ContactUsListView.as_view(), name='normal-query'),
+    path('api/product-page/inquiry/', ProductContactUsView.as_view(), name='product-query'),
 ]
