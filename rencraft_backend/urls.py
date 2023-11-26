@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from contact_us_api.views import ContactUsListView, ProductContactUsView
+from contact_us_api.views import ContactUsListView, ProductContactUsView, GetQuotetionView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/contact-us/product-inquiry/', ContactUsListView.as_view(), name='normal-query'),
     path('api/product-page/inquiry/', ProductContactUsView.as_view(), name='product-query'),
+    path('api/price-page/inquiry/', GetQuotetionView.as_view(), name='price-query')
 ]
