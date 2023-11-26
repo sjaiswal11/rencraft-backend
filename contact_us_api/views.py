@@ -27,3 +27,33 @@ class ContactUsListView(APIView):
             send_mail(subject,body, sender, [reciever])
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class ProductContactUsView(APIView):
+    def post(self,request):
+        try:
+            contact_data=request.data
+            print(contact_data)
+            subject = "Web Product page inquiry"
+            sender = 'fightersunny111@gmail.com'
+            body = f"Phone: {contact_data['phone']}\nEmail: {contact_data['email']}\nMessage: {contact_data['message']}"
+            reciever = 'contact_us@rencraft.in'                
+            send_mail(subject,body, sender, [reciever])
+            return Response(status=status.HTTP_201_CREATED)
+        except:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class GetQuotetionView(APIView):
+    def post(self,request):
+        try:
+            contact_data=request.data
+            print(contact_data)
+            subject = "Price page Inquiry"
+            sender = 'fightersunny111@gmail.com'
+            body = f"Category: {contact_data['category']}\nQuantity: {contact_data['quantity']}\nName: {contact_data['name']}\nEmail: {contact_data['email']}\nMessage: {contact_data['message']}"
+            reciever = 'contact_us@rencraft.in'                
+            send_mail(subject,body, sender, [reciever])
+            return Response(status=status.HTTP_201_CREATED)
+        except:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
