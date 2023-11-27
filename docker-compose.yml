@@ -9,7 +9,7 @@ services:
     expose:
       - 8000
     environment:
-      - DJANGO_SETTINGS_MODULE=rencraft_backend.settings.production  # Adjust your Django production settings
+      - DJANGO_SETTINGS_MODULE=rencraft_backend.settings # Adjust your Django production settings
     command: gunicorn rencraft_backend.wsgi:application --bind 0.0.0.0:8000
     networks:
       - nginx-proxy
