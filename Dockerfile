@@ -27,7 +27,7 @@ COPY . /app/
 RUN python manage.py collectstatic --noinput
 
 RUN python manage.py makemigrations \
-&& python mange.py migrate 
+&& python manage.py migrate 
 
 # Create a user for running the application
 RUN useradd -ms /bin/bash rencraft
