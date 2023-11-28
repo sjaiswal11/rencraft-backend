@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9
+FROM python:3.10
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -26,9 +26,12 @@ COPY . /app/
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
+RUN python manage.py makemigrations \
+&& python mange.py migrate 
+
 # Create a user for running the application
-RUN useradd -ms /bin/bash user
-USER user
+RUN useradd -ms /bin/bash rencraft
+USER rencraft
 
 # Run Gunicorn
 CMD gunicorn rencraft_backend.wsgi:application --bind 0.0.0.0:8000
