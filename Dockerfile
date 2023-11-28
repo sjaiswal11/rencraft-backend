@@ -24,7 +24,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Collect static files
-# RUN python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 
 # Create a user for running the application
 RUN useradd -ms /bin/bash user
