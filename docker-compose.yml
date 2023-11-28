@@ -6,6 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    volumes:
+      - ./rencraft_backend:/app
+      - ./rencraft_backend/static:/app/static
     expose:
       - 8000
     environment:
@@ -20,6 +23,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./rencraft_backend/static:/app/static
     depends_on:
       - web
     networks:
