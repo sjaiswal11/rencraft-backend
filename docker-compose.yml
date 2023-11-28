@@ -6,9 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    volumes:
-      - ./rencraft_backend:/app
-      - ./rencraft_backend/static:/app/static
     expose:
       - 8000
     environment:
